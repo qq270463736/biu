@@ -1,6 +1,7 @@
 package com.ge.stream;
 
 import com.ge.lambda.Student;
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -33,9 +34,11 @@ public class TestStream1 {
         //3.通过stream类中的静态方法 of()
         Stream<Integer> stream2 = Stream.of(1,2,3,4,5);
 
+        stream2.forEach(System.out::println);
+
         //4.创建无限流
         //迭代
-        Stream<Integer> stream3 = Stream.iterate(2,(x) -> x+2).limit(5);
+        Stream<Integer> stream3 = Stream.iterate(3,(x) -> x+2).limit(5);
         stream3.forEach(System.out::println);
         //生成   里面是供给型
         Stream<Double> stream4 = Stream.generate(Math::random).limit(2);

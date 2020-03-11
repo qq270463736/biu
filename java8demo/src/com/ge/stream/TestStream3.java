@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * 终止操作
@@ -40,30 +41,34 @@ public class TestStream3 {
     public void test1(){
         boolean b = bb.stream()
                 .allMatch(x -> x.getAge() == 12);
-        System.out.println(b);
+//        System.out.println(b);
+
+
+        Stream<Student> studentStream = bb.stream().filter(x -> x.getPrice().compareTo(BigDecimal.valueOf(7000)) > 0);
+//        studentStream.forEach(System.out::println);
 
         boolean b1 = bb.stream()
                 .anyMatch(x -> x.getAge() == 12);
-        System.out.println(b1);
+//        System.out.println(b1);
 
         boolean b2 = bb.stream()
                 .noneMatch(x -> x.getAge() == 19);
-        System.out.println(b2);
+//        System.out.println(b2);
 
         Optional<Student> first = bb.stream()
                 .sorted((x, y) -> x.getAge().compareTo(y.getAge()))
                 .findFirst();
-        System.out.println(first.get());
+//        System.out.println(first.get());
 
         Optional<Student> any = bb.stream()
                 .filter(x -> x.getPrice().compareTo(BigDecimal.valueOf(5000)) > 0)
                 .findAny();
-        System.out.println(any.get());
+//        System.out.println(any.get());
 
         long count = bb.stream()
                 .filter(x -> x.getPrice().compareTo(BigDecimal.valueOf(5000)) > 0)
                 .count();
-        System.out.println(count);
+//        System.out.println(count);
 
         Optional<Integer> max = bb.stream()
                 .map(Student::getAge)

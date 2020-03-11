@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abc.dao.YwTreeMapper">
+
+
+    <insert id="saveOrUpdate">
+        INSERT INTO sys_perm (pval,parent,pname,ptype,leaf,created,ylid) VALUES
+        <foreach collection="perms" item="p" separator=",">
+            (#{p.pval},#{p.parent},#{p.pname},#{p.ptype},#{p.leaf},#{p.created},#{p.ylid})
+        </foreach>
+        ON DUPLICATE KEY UPDATE
+        pname = VALUES(pname), parent = VALUES(parent), ptype = VALUES(ptype), leaf = VALUES(leaf),ylid = VALUE(ylid), updated = now()
+    </insert>
+
+
+
+</mapper>

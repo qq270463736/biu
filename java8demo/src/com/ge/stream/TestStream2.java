@@ -60,24 +60,25 @@ public class TestStream2 {
      public void test2(){
 
          Stream<Student> studentStream = Arrays.stream(aa);
-         studentStream.map( (t) -> t.getName())
-                 .forEach(System.out::println);
+//         studentStream.map( (t) -> t.getName())
+//                 .forEach(System.out::println);
 
          List<String> strings = Arrays.asList("aa", "bb", "cc", "dd");
          Stream<String> stream = strings.stream()
-                       .map(String::toUpperCase);
-          stream.forEach(System.out::println);
+                 .map(String::toUpperCase);
+//         stream.forEach(System.out::println);
 
          //map流中有流
          Stream<Stream<String>> stream1 = strings.stream()
                  .map(TestStream2::getstream);
          stream1.forEach(xs -> xs.forEach(System.out::println));
+//         stream1.forEach(System.out::println);
 
 
          //flatMap 把所有流连成一个流
          Stream<String> stream2 = strings.stream()
                  .flatMap(TestStream2::getstream);
-         stream2.forEach(System.out::println);
+//         stream2.forEach(System.out::println);
 
      }
 
