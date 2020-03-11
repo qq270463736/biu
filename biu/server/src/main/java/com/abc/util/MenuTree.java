@@ -29,6 +29,7 @@ public class MenuTree {
                 MenuResource topMenu = new MenuResource(m);
                 topMenu.setChildren(menuChild(m.getMenuId()));
                 list.add(topMenu);
+
             }
         }
         return list;
